@@ -18,6 +18,7 @@ router.post("/login", async (req, res) => {
       const token = await user.getJWT();
       res.cookie("token", token, {
         expires: new Date(Date.now() + 1 * 3600000),
+        secure: true,
       });
       res.send(user);
     }
