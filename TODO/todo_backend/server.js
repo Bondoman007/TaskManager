@@ -11,7 +11,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.BASE_URL,
+    origin: "https://taskmanager-frontend-94mc.onrender.com",
     credentials: true,
   })
 );
