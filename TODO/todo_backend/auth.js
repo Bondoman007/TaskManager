@@ -17,8 +17,10 @@ router.post("/login", async (req, res) => {
     } else {
       const token = await user.getJWT();
       res.cookie("token", token, {
-        expires: new Date(Date.now() + 1 * 3600000),
+        httpOnly: true,
         secure: true,
+        sameSite: "none",
+        expires: new Date(Date.now() + 1 * 3600000),
       });
       res.send(user);
     }
