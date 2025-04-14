@@ -1,7 +1,7 @@
 // components/Login.js
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { BASE_URL } from "../constants";
@@ -38,6 +38,7 @@ const Login = () => {
         onChange={(e) => setForm({ ...form, password: e.target.value })}
       />
       <button type="submit">Login</button>
+      <Link to={"/signup"}>Sign Up here!</Link>
     </form>
   );
 };

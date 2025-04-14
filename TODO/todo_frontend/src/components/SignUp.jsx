@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./auth.css";
 import { BASE_URL } from "../constants";
+import { Link } from "react-router-dom";
 const Signup = () => {
   const [form, setForm] = useState({
     firstName: "",
@@ -80,6 +81,7 @@ const Signup = () => {
         required
       />
       <button type="submit">Sign Up</button>
+      <Link to={"/login"}>Login here!</Link>
     </form>
   );
 };
