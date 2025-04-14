@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import { BASE_URL } from "../constants";
 const Login = () => {
   const [form, setForm] = useState({ emailId: "", password: "" });
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/login", form, { withCredentials: true })
+      .post(BASE_URL + "/login", form, { withCredentials: true })
       .then((result) => {
         navigate("/");
       })

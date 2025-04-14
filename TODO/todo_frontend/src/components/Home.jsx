@@ -10,16 +10,17 @@ import {
   BsPencil,
 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-
+import { BASE_URL } from "../constants";
 const Home = () => {
   const [todos, setTodos] = useState([]);
   const [updatetask, setUpdatetask] = useState("");
   const [taskid, setTaskid] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const fetchTodos = () => {
     axios
-      .get("http://localhost:5000/get", { withCredentials: true })
+      .get(BASE_URL + "/get", { withCredentials: true })
       .then((result) => {
         const todoList = result?.data?.Todos || []; // fallback to empty array
         setTodos(todoList);
@@ -39,7 +40,7 @@ const Home = () => {
 
   const edit = (id) => {
     axios
-      .put(`http://localhost:5000/edit/${id}`, {}, { withCredentials: true })
+      .put(BASE_URL + `/edit/${id}`, {}, { withCredentials: true })
       .then(fetchTodos)
       .catch((err) => console.log(err));
   };
@@ -47,7 +48,7 @@ const Home = () => {
   const Update = (id, updatedTask) => {
     axios
       .put(
-        `http://localhost:5000/update/${id}`,
+        BASE_URL + `/update/${id}`,
         { task: updatedTask },
         { withCredentials: true }
       )
@@ -61,7 +62,7 @@ const Home = () => {
 
   const Hdelete = (id) => {
     axios
-      .delete(`http://localhost:5000/delete/${id}`, { withCredentials: true })
+      .delete(BASE_URL + `/delete/${id}`, { withCredentials: true })
       .then(fetchTodos)
       .catch((err) => console.log(err));
   };

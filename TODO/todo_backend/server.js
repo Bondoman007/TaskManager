@@ -5,20 +5,20 @@ const User = require("./models/User");
 const authRouter = require("./auth");
 const { userAuth } = require("./middleware/auth");
 const cookieParser = require("cookie-parser");
+require("dotenv").config(); // ✅ Load environment variables early in the file
 
 const app = express();
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.BASE_URL,
     credentials: true,
   })
 );
 app.use(express.json());
 app.use(cookieParser());
 mongoose
-  .connect(
-    "mongodb+srv://kanishkDev:rpafAzM60tQOJT94@kanishkdev.aworo.mongodb.net/TaskManager"
-  )
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.log("MongoDB connected");
   })

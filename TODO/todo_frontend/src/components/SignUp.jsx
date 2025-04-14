@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./auth.css";
-
+import { BASE_URL } from "../constants";
 const Signup = () => {
   const [form, setForm] = useState({
     firstName: "",
@@ -23,7 +23,7 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/signup", form, { withCredentials: true })
+      .post(BASE_URL + "/signup", form, { withCredentials: true })
       .then(() => navigate("/login"))
       .catch((err) => console.error(err));
   };
