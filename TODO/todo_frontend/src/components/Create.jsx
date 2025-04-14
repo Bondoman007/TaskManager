@@ -1,14 +1,14 @@
 // components/Create.js
 import React, { useState } from "react";
 import axios from "axios";
-
+import { BASE_URL } from "../constants";
 const Create = ({ fetchTodos }) => {
   const [task, setTask] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/add", { task }, { withCredentials: true })
+      .post(BASE_URL + "/add", { task }, { withCredentials: true })
       .then(() => {
         setTask("");
         fetchTodos();
